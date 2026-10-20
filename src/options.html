@@ -1,0 +1,72 @@
+<!doctype html>
+<!--
+  FirePHP Console MV3 — options.html  · Versión 1.0.1
+  Historial:
+    1.0.1 (2026-10-20) Hosts con interruptor; añadir a mano pasa a ser opcional.
+    1.0.0 (2026-10-19) Versión inicial.
+-->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Opciones · FirePHP Console</title>
+<link rel="stylesheet" href="ui.css">
+</head>
+<body class="options">
+<main>
+  <h1><img src="icons/icon48.png" width="32" height="32" alt=""> FirePHP Console <small id="ver"></small></h1>
+
+  <section>
+    <h2>Hosts activados</h2>
+    <p class="hint">Lo normal es activar cada web con el <b>interruptor del icono de FirePHP</b> en la barra del navegador (o el del panel de DevTools) estando en esa página. Aquí aparecen los hosts activados.</p>
+    <table class="sites"><tbody id="sites"></tbody></table>
+    <form id="addSite" class="inline">
+      <input id="newHost" placeholder="(opcional) añadir a mano: ejemplo.local, 127.0.0.1…" autocomplete="off">
+      <button>Añadir</button>
+    </form>
+    <p id="addError" class="warn" hidden></p>
+  </section>
+
+  <section>
+    <h2>Cabeceras de petición</h2>
+    <label class="chk"><input type="checkbox" data-opt="sendFirePHPHeader"> Enviar <code>X-FirePHP-Version: 0.4</code> <span class="hint">(lo comprueban firephp-core y Monolog)</span></label>
+    <label class="chk"><input type="checkbox" data-opt="sendUserAgent"> Añadir <code>FirePHP/0.5</code> al <code>User-Agent</code> <span class="hint">(FirePHPCore antiguo)</span></label>
+    <label class="chk"><input type="checkbox" data-opt="announceInsight"> Enviar anuncio Wildfire de receptores para <b>FirePHP 1.0 / Insight</b></label>
+    <label class="field">Authkey de Insight <input data-opt="insightAuthKey" placeholder="(vacío)"></label>
+  </section>
+
+  <section>
+    <h2>Respuestas</h2>
+    <label class="chk"><input type="checkbox" data-opt="chromeLogger"> Interpretar también <code>X-ChromeLogger-Data</code> (ChromePhp, Monolog ChromePHPHandler)</label>
+  </section>
+
+  <section>
+    <h2>Panel</h2>
+    <label class="chk"><input type="checkbox" data-opt="preserveLog"> Conservar los mensajes al navegar</label>
+    <label class="chk"><input type="checkbox" data-opt="showEmptyRequests"> Mostrar también peticiones sin mensajes</label>
+    <label class="field">Máximo de peticiones guardadas <input type="number" min="20" max="5000" data-opt="maxRequests"></label>
+    <label class="field">Niveles a expandir automáticamente en objetos <input type="number" min="0" max="5" data-opt="autoExpandDepth"></label>
+  </section>
+
+  <section>
+    <h2>Abrir ficheros en el editor</h2>
+    <label class="field">Editor
+      <select id="editorPreset"></select>
+    </label>
+    <label class="field">Plantilla de URL <input data-opt="editorUrl" placeholder="vscode://file/{file}:{line}"></label>
+    <label class="field col">Mapeo de rutas servidor ⇒ local <span class="hint">(una por línea; útil si PHP corre en otra máquina o en Docker)</span>
+      <textarea data-opt="pathMap" rows="4" placeholder="/var/www/html => /home/usuario/proyectos/app&#10;/srv/app => C:/dev/app"></textarea>
+    </label>
+  </section>
+
+  <section>
+    <h2>Diagnóstico</h2>
+    <p class="hint">Reglas declarativeNetRequest activas ahora mismo:</p>
+    <pre id="rules" class="rules"></pre>
+  </section>
+
+  <p id="saved" class="saved" hidden>Guardado</p>
+</main>
+<script src="lib/settings.js"></script>
+<script src="options.js"></script>
+</body>
+</html>

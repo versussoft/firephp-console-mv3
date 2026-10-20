@@ -1,0 +1,41 @@
+{
+    "manifest_version": 3,
+    "name": "FirePHP Console MV3",
+    "short_name": "FirePHP",
+    "version": "1.0.1",
+    "description": "Panel de DevTools para los mensajes de FirePHP (Wildfire), FirePHP 1.0/Insight y ChromeLogger enviados en cabeceras HTTP. Compatible con Manifest V3.",
+    "minimum_chrome_version": "116",
+    "icons": {
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png"
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "devtools_page": "devtools.html",
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "FirePHP Console",
+        "default_icon": {
+            "16": "icons/icon16_disabled.png",
+            "48": "icons/icon48_disabled.png"
+        }
+    },
+    "options_ui": {
+        "page": "options.html",
+        "open_in_tab": true
+    },
+    "permissions": [
+        "storage",
+        "activeTab",
+        "declarativeNetRequestWithHostAccess"
+    ],
+    "optional_host_permissions": [
+        "http://*/*",
+        "https://*/*"
+    ],
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self'"
+    }
+}

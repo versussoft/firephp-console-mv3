@@ -1,0 +1,45 @@
+<!doctype html>
+<!--
+  FirePHP Console MV3 — popup.html  · Versión 1.0.1
+  Historial:
+    1.0.1 (2026-10-20) Sin cambios de marcado; acompaña a popup.js 1.0.1.
+    1.0.0 (2026-10-19) Versión inicial: activar/desactivar FirePHP por host.
+-->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>FirePHP Console</title>
+<link rel="stylesheet" href="ui.css">
+</head>
+<body class="popup">
+  <header class="popup-head">
+    <img src="icons/icon48.png" width="28" height="28" alt="">
+    <div>
+      <div class="popup-title">FirePHP Console</div>
+      <div class="popup-host" id="host">—</div>
+    </div>
+  </header>
+
+  <section id="main" hidden>
+    <label class="switch-row">
+      <span>Activar en este host</span>
+      <span class="switch"><input type="checkbox" id="enabled"><span class="slider"></span></span>
+    </label>
+    <p class="status" id="status"></p>
+    <div class="btns">
+      <button id="reload" hidden>Recargar la página</button>
+      <button id="options" class="secondary">Opciones…</button>
+    </div>
+  </section>
+
+  <section id="unsupported" hidden>
+    <p class="status">FirePHP solo funciona en páginas <code>http://</code> o <code>https://</code>.</p>
+    <div class="btns"><button id="options2" class="secondary">Opciones…</button></div>
+  </section>
+
+  <footer class="popup-foot">Abre DevTools (F12) → pestaña <b>FirePHP</b></footer>
+
+<script src="lib/settings.js"></script>
+<script src="popup.js"></script>
+</body>
+</html>

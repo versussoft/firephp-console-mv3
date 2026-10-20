@@ -1,0 +1,52 @@
+<!doctype html>
+<!--
+  FirePHP Console MV3 — panel.html · Versión 1.0.0
+  Historial:
+    1.0.0 (2026-10-19) Versión inicial.
+-->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>FirePHP</title>
+<link rel="stylesheet" href="panel.css">
+</head>
+<body>
+  <div class="toolbar">
+    <label class="host-toggle" id="hostToggle" title="Enviar las cabeceras FirePHP a este host">
+      <span class="switch"><input type="checkbox" id="hostEnabled"><span class="slider"></span></span>
+      <span id="hostName" class="host-name">—</span>
+    </label>
+    <span class="sep"></span>
+    <button class="tb" id="btnClear" title="Limpiar (Ctrl+L)">⊘</button>
+    <button class="tb" id="btnReload" title="Recargar la página sin caché">⟳</button>
+    <label class="tb-check" title="No limpiar al navegar"><input type="checkbox" id="preserveLog"> Conservar</label>
+    <span class="sep"></span>
+    <input type="search" id="filter" placeholder="Filtrar" spellcheck="false">
+    <span class="levels" id="levels">
+      <button class="lvl-btn on" data-level="log">Log <b data-count="log">0</b></button>
+      <button class="lvl-btn on" data-level="info">Info <b data-count="info">0</b></button>
+      <button class="lvl-btn on" data-level="warn">Avisos <b data-count="warn">0</b></button>
+      <button class="lvl-btn on" data-level="error">Errores <b data-count="error">0</b></button>
+    </span>
+    <span class="spacer"></span>
+    <button class="tb" id="btnExpandAll" title="Expandir/contraer todas las peticiones">⇕</button>
+    <button class="tb" id="btnOptions" title="Opciones">⚙</button>
+  </div>
+
+  <div id="banner" class="banner" hidden></div>
+
+  <div id="log" class="log" tabindex="0"></div>
+
+  <div id="empty" class="empty">
+    <img src="icons/icon128.png" width="64" height="64" alt="">
+    <h2>FirePHP Console</h2>
+    <p id="emptyText">Esperando cabeceras FirePHP / ChromeLogger…</p>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+
+<script src="lib/protocol.js"></script>
+<script src="lib/settings.js"></script>
+<script src="panel.js"></script>
+</body>
+</html>
